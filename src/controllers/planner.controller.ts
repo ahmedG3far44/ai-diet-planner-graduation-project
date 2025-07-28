@@ -1,20 +1,20 @@
-import { IDietPlanType } from "./../utils/types";
-import { Type } from "@google/genai";
+import { INSPECT_MAX_BYTES } from "buffer";
 import gemini from "../configs/gemini";
+import { IDietPlanType, IUserInfo, responseSchema } from "./../utils/types";
 
 async function generateDietPlans(
-  calories: number,
-  age: number,
-  height: number,
-  weight: number,
-  gender: "male" | "female",
-  avoid?:string[],
-  favorite?:string[],
+  userInfo: IUserInfo,
+  avoid?: string[],
+  favorite?: string[]
 ): Promise<IDietPlanType[]> {
+  const user = calcUserCalories(userInfo);
+
+  const { weight, height, age, gender, goal, active_rate } = userInfo;
+
   const response = await gemini.models.generateContent({
     model: "gemini-2.5-flash",
     contents: `Generate 3 distinct diet plans for:
-  - Calories: ${calories} kcal,
+  - Calories: ${user.calories} kcal,
   - Height: ${height} cm,
   - Weight: ${weight} kg,
   - Age: ${age} years,
@@ -47,280 +47,7 @@ async function generateDietPlans(
         - Return perfect JSON without markdown
         `,
       responseMimeType: "application/json",
-      responseSchema: {
-        type: Type.ARRAY,
-        items: {
-          type: Type.OBJECT,
-          properties: {
-            name: {
-              type: Type.STRING,
-            },
-            description: {
-              type: Type.STRING,
-            },
-            options: {
-              type: Type.ARRAY,
-              items: {
-                type: Type.STRING,
-              },
-            },
-            avoid: {
-              type: Type.ARRAY,
-              items: {
-                type: Type.STRING,
-              },
-            },
-            meals: {
-              type: Type.OBJECT,
-              properties: {
-                breakfast: {
-                  type: Type.OBJECT,
-                  properties: {
-                    name: {
-                      type: Type.STRING,
-                    },
-                    description: {
-                      type: Type.STRING,
-                    },
-                    price: {
-                      type: Type.NUMBER,
-                    },
-                    protein: {
-                      type: Type.NUMBER,
-                    },
-                    carbs: {
-                      type: Type.NUMBER,
-                    },
-                    fats: {
-                      type: Type.NUMBER,
-                    },
-                    calories: {
-                      type: Type.NUMBER,
-                    },
-                    items: {
-                      type: Type.ARRAY,
-                      items: {
-                        type: Type.OBJECT,
-                        properties: {
-                          name: {
-                            type: Type.STRING,
-                          },
-                          quantity: {
-                            type: Type.NUMBER,
-                          },
-                          unit: {
-                            type: Type.STRING,
-                          },
-                        },
-                        propertyOrdering: ["name", "quantity", "unit"],
-                      },
-                    },
-                  },
-                  propertyOrdering: [
-                    "name",
-                    "description",
-                    "price",
-                    "protein",
-                    "carbs",
-                    "fats",
-                    "calories",
-                    "items",
-                  ],
-                },
-                lunch: {
-                  type: Type.OBJECT,
-                  properties: {
-                    name: {
-                      type: Type.STRING,
-                    },
-                    description: {
-                      type: Type.STRING,
-                    },
-                    price: {
-                      type: Type.NUMBER,
-                    },
-                    protein: {
-                      type: Type.NUMBER,
-                    },
-                    carbs: {
-                      type: Type.NUMBER,
-                    },
-                    fats: {
-                      type: Type.NUMBER,
-                    },
-                    calories: {
-                      type: Type.NUMBER,
-                    },
-                    items: {
-                      type: Type.ARRAY,
-                      items: {
-                        type: Type.OBJECT,
-                        properties: {
-                          name: {
-                            type: Type.STRING,
-                          },
-                          quantity: {
-                            type: Type.NUMBER,
-                          },
-                          unit: {
-                            type: Type.STRING,
-                          },
-                        },
-                        propertyOrdering: ["name", "quantity", "unit"],
-                      },
-                    },
-                  },
-                  propertyOrdering: [
-                    "name",
-                    "description",
-                    "price",
-                    "protein",
-                    "carbs",
-                    "fats",
-                    "calories",
-                    "items",
-                  ],
-                },
-                dinner: {
-                  type: Type.OBJECT,
-                  properties: {
-                    name: {
-                      type: Type.STRING,
-                    },
-                    description: {
-                      type: Type.STRING,
-                    },
-                    price: {
-                      type: Type.NUMBER,
-                    },
-                    protein: {
-                      type: Type.NUMBER,
-                    },
-                    carbs: {
-                      type: Type.NUMBER,
-                    },
-                    fats: {
-                      type: Type.NUMBER,
-                    },
-                    calories: {
-                      type: Type.NUMBER,
-                    },
-                    items: {
-                      type: Type.ARRAY,
-                      items: {
-                        type: Type.OBJECT,
-                        properties: {
-                          name: {
-                            type: Type.STRING,
-                          },
-                          quantity: {
-                            type: Type.NUMBER,
-                          },
-                          unit: {
-                            type: Type.STRING,
-                          },
-                        },
-                        propertyOrdering: ["name", "quantity", "unit"],
-                      },
-                    },
-                  },
-                  propertyOrdering: [
-                    "name",
-                    "description",
-                    "price",
-                    "protein",
-                    "carbs",
-                    "fats",
-                    "calories",
-                    "items",
-                  ],
-                },
-                snacks: {
-                  type: Type.OBJECT,
-                  properties: {
-                    name: {
-                      type: Type.STRING,
-                    },
-                    description: {
-                      type: Type.STRING,
-                    },
-                    price: {
-                      type: Type.NUMBER,
-                    },
-                    protein: {
-                      type: Type.NUMBER,
-                    },
-                    carbs: {
-                      type: Type.NUMBER,
-                    },
-                    fats: {
-                      type: Type.NUMBER,
-                    },
-                    calories: {
-                      type: Type.NUMBER,
-                    },
-                    items: {
-                      type: Type.ARRAY,
-                      items: {
-                        type: Type.OBJECT,
-                        properties: {
-                          name: {
-                            type: Type.STRING,
-                          },
-                          quantity: {
-                            type: Type.NUMBER,
-                          },
-                          unit: {
-                            type: Type.STRING,
-                          },
-                        },
-                        propertyOrdering: ["name", "quantity", "unit"],
-                      },
-                    },
-                  },
-                  propertyOrdering: [
-                    "name",
-                    "description",
-                    "price",
-                    "protein",
-                    "carbs",
-                    "fats",
-                    "calories",
-                    "items",
-                  ],
-                },
-              },
-              propertyOrdering: ["breakfast", "lunch", "dinner", "snacks"],
-            },
-            total: {
-              type: Type.OBJECT,
-              properties: {
-                calories: {
-                  type: Type.NUMBER,
-                },
-                protein: {
-                  type: Type.NUMBER,
-                },
-                carbs: {
-                  type: Type.NUMBER,
-                },
-                fats: {
-                  type: Type.NUMBER,
-                },
-              },
-              propertyOrdering: ["calories", "protein", "carbs", "fats"],
-            },
-          },
-          propertyOrdering: [
-            "name",
-            "description",
-            "options",
-            "avoid",
-            "meals",
-            "total",
-          ],
-        },
-      },
+      responseSchema: responseSchema,
     },
   });
   if (!response.text) {
@@ -329,7 +56,7 @@ async function generateDietPlans(
   const data = response.text?.toString();
 
   const dietPlans: IDietPlanType[] = JSON.parse(data as string);
-  
+
   return dietPlans;
 }
 
@@ -337,18 +64,82 @@ export default generateDietPlans;
 
 export const calcServingPerWeek = (dietPlan: IDietPlanType) => {
   const weeklyServings = {
-    breakfast: dietPlan.meals.breakfast.items
-      .map((item) => item.name + " " + item.quantity * 7 + " " + item.unit)
-      .join(" || "),
-    lunch: dietPlan.meals.lunch.items
-      .map((item) => item.name + " " + item.quantity * 7 + " " + item.unit)
-      .join(" || "),
-    dinner: dietPlan.meals.dinner.items
-      .map((item) => item.name + " " + item.quantity * 7 + " " + item.unit)
-      .join(" || "),
-    snacks: dietPlan.meals.snacks.items
-      .map((item) => item.name + " " + item.quantity * 7 + " " + item.unit)
-      .join(" || "),
+    breakfast: dietPlan.meals.breakfast.items.map((item) => ({
+      name: item.name,
+      quantity: (item.quantity *= 7),
+      unit: item.unit,
+    })),
+    lunch: dietPlan.meals.lunch.items.map((item) => ({
+      name: item.name,
+      quantity: (item.quantity *= 7),
+      unit: item.unit,
+    })),
+    dinner: dietPlan.meals.dinner.items.map((item) => ({
+      name: item.name,
+      quantity: (item.quantity *= 7),
+      unit: item.unit,
+    })),
+    snacks: dietPlan.meals.snacks.items.map((item) => ({
+      name: item.name,
+      quantity: (item.quantity *= 7),
+      unit: item.unit,
+    })),
   };
   return weeklyServings;
+};
+export const calcServingPerMonth = (dietPlan: IDietPlanType) => {
+  const monthlyServings = {
+    breakfast: dietPlan.meals.breakfast.items.map((item) => ({
+      name: item.name,
+      quantity: (item.quantity *= 30),
+      unit: item.unit,
+    })),
+    lunch: dietPlan.meals.lunch.items.map((item) => ({
+      name: item.name,
+      quantity: (item.quantity *= 30),
+      unit: item.unit,
+    })),
+    dinner: dietPlan.meals.dinner.items.map((item) => ({
+      name: item.name,
+      quantity: (item.quantity *= 30),
+      unit: item.unit,
+    })),
+    snacks: dietPlan.meals.snacks.items.map((item) => ({
+      name: item.name,
+      quantity: (item.quantity *= 30),
+      unit: item.unit,
+    })),
+  };
+  return monthlyServings;
+};
+
+export const calcUserCalories = (params: IUserInfo) => {
+  const { weight, height, age, gender, goal, active_rate } = params;
+
+  const bmr =
+    gender === "male"
+      ? 10 * weight + 6.25 * height - 5 * age + 5
+      : 10 * weight + 6.25 * height - 5 * age - 161;
+
+  const bmi = weight / (height / 100) ** 2;
+  const bodyFat =
+    gender === "male"
+      ? 1.2 * bmi + 0.23 * age - 16.2
+      : 1.2 * bmi + 0.23 * age - 5.4;
+
+  const maintenanceCalories = bmr * active_rate;
+
+  const goalCalories =
+    goal === -1
+      ? maintenanceCalories - 300
+      : goal === 1
+        ? maintenanceCalories + 300
+        : maintenanceCalories;
+
+  return {
+    bmr: Math.round(bmr),
+    body_fat: Math.round(bodyFat * 10) / 10,
+    maintenance_calories: Math.round(maintenanceCalories),
+    calories: Math.round(goalCalories),
+  };
 };
