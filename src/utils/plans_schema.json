@@ -1,0 +1,57 @@
+{
+  "plan_1": {
+    "name": "Diet Plan Name",
+    "description": "Brief description of the diet philosophy.",
+    "varieties": ["List of primary food groups included"],
+    "avoid": ["List of foods to avoid"],
+    "breakFast": {
+      "calories": 0,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 0,
+      "foods": {
+        "food_item_1": 0, 
+        "food_item_2": 0
+      }
+    },
+    "lunch": {
+      "calories": 0,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 0,
+      "foods": {
+        "food_item_1": 0,
+        "food_item_2": 0
+      }
+    },
+    "dinner": {
+      "calories": 0,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 0,
+      "foods": {
+        "food_item_1": 0,
+        "food_item_2": 0
+      }
+    },
+    "snacks": { 
+      "calories": 0,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 0,
+      "foods": {
+        "food_item_1": 0,
+        "food_item_2": 0
+      }
+    },
+    "total": {
+      "calories": 0,
+      "protein": 0,
+      "carbs": 0,
+      "fat": 0
+    }
+  },
+  "plan_2": "{ ... }",
+  "plan_3": "{ ... }",
+  "plan_4": "{ ... }"
+}

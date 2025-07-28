@@ -1,0 +1,335 @@
+[
+  
+   {
+    "name": "Keto",
+    "description": "A low-carb, high-fat diet that aims to put the body into a state of ketosis.",
+    "varieties": [
+      "Meat",
+      "Fish",
+      "Eggs",
+      "Dairy",
+      "Nuts",
+      "Seeds",
+      "Low-carb vegetables"
+    ],
+    "avoid": ["Sugary foods", "Grains", "Starchy vegetables", "Most fruits"],
+    "breakFast": {
+      "calories": 300,
+      "protein": 20,
+      "carbs": 5,
+      "fat": 25,
+      "items":[
+        {
+          "name": "bacon",
+          "quantity": 100,
+          "unit": "grams"
+        },
+        {
+          "name": "eggs",
+          "quantity": 3,
+          "unit": "large"
+        },
+        {
+          "name": "avocado",
+          "quantity": 1,
+          "unit": "medium"
+        }
+      ]
+    },
+    "lunch": {
+      "calories": 400,
+      "protein": 30,
+      "carbs": 10,
+      "fat": 30,
+      "items": [
+        {
+          "name": "chicken breast",
+          "quantity": 200,
+          "unit": "grams"
+        },
+        {
+          "name": "olive oil",
+          "quantity": 2,
+          "unit": "tablespoons"
+        },
+        {
+          "name": "mixed greens",
+          "quantity": 150,
+          "unit": "grams"
+        },
+        {
+          "name": "rice",
+          "quantity": 100,
+          "unit": "grams"
+        }
+      ]
+    },
+    "dinner": {
+      "calories": 500,
+      "protein": 40,
+      "carbs": 15,
+      "fat": 35,
+      "items": [
+        {
+          "name": "salmon",
+          "quantity": 200,
+          "unit": "grams"
+        },
+        {
+          "name": "asparagus",
+          "quantity": 150,
+          "unit": "grams"
+        },
+        {
+          "name": "butter",
+          "quantity": 20,
+          "unit": "grams"
+        },
+        {
+          "name": "potatoes",
+          "quantity": 100,
+          "unit": "grams"
+        }
+      ]
+    },
+    "snacks": {
+      "calories": 200,
+      "protein": 10,
+      "carbs": 5,
+      "fat": 15,
+      "items": [
+        {
+          "name": "cheese",
+          "quantity": 100,
+          "unit": "grams"
+        },
+        {
+          "name": "nuts",
+          "quantity": 50,
+          "unit": "grams"
+        },
+        {
+          "name": "celery",
+          "quantity": 100,
+          "unit": "grams"
+        },
+        {
+          "name": "cream cheese",
+          "quantity": 50,
+          "unit": "grams"
+        }
+      ]
+    },
+    "total": {
+      "calories": 1400,
+      "protein": 100,
+      "carbs": 35,
+      "fat": 105
+    }
+  },
+  {
+    "name": "Mediterranean",
+    "description": "A diet based on the traditional eating habits of countries bordering the Mediterranean Sea.",
+    "varieties": [
+      "Fruits",
+      "Vegetables",
+      "Whole grains",
+      "Fish",
+      "Olive oil",
+      "Nuts"
+    ],
+    "avoid": ["Red meat", "Processed foods", "Sugary drinks"],
+    "breakFast": {
+      "calories": 350,
+      "protein": 15,
+      "carbs": 40,
+      "fat": 15,
+      "items": [
+        {
+          "name": "greek yogurt",
+          "quantity": 200,
+          "unit": "grams"
+        },
+        {
+          "name": "honey",
+          "quantity": 1,
+          "unit": "tablespoon"
+        },
+        {
+          "name": "berries",
+          "quantity": 100,
+          "unit": "grams"
+        }
+      ]
+    },
+    "lunch": {
+      "calories": 450,
+      "protein": 25,
+      "carbs": 50,
+      "fat": 20,
+      "items": [
+        {
+          "name": "grilled chicken",
+          "quantity": 150,
+          "unit": "grams"
+        },
+        {
+          "name": "quinoa",
+          "quantity": 100,
+          "unit": "grams"
+        },
+        {
+          "name": "mixed vegetables",
+          "quantity": 200,
+          "unit": "grams"
+        }
+      ]
+    },
+    "dinner": {
+      "calories": 500,
+      "protein": 30,
+      "carbs": 45,
+      "fat": 25,
+      "items": [
+        {
+          "name": "baked fish",
+          "quantity": 200,
+          "unit": "grams"
+        },
+        {
+          "name": "brown rice",
+          "quantity": 150,
+          "unit": "grams"
+        },
+        {
+          "name": "steamed broccoli",
+          "quantity": 150,
+          "unit": "grams"
+        }
+      ]
+    },
+    "snacks": {
+      "calories": 200,
+      "protein": 10,
+      "carbs": 20,
+      "fat": 10,
+      "items": [
+        {
+          "name": "hummus",
+          "quantity": 100,
+          "unit": "grams"
+        },
+        {
+          "name": "carrot sticks",
+          "quantity": 100,
+          "unit": "grams"
+        }
+      ]
+    },
+    "total": {
+      "calories": 1500,
+      "protein": 80,
+      "carbs": 155,
+      "fat": 70
+    }
+  },
+  {
+    "name": "Paleo",
+    "description": "A diet that focuses on foods presumed to be available to Paleolithic humans.",
+    "varieties": ["Meat", "Fish", "Fruits", "Vegetables", "Nuts", "Seeds"],
+    "avoid": ["Grains", "Dairy", "Processed foods", "Legumes"],
+    "breakFast": {
+      "calories": 400,
+      "protein": 25,
+      "carbs": 30,
+      "fat": 20,
+      "items": [
+        {
+          "name": "scrambled eggs",
+          "quantity": 3,
+          "unit": "large"
+        },
+        {
+          "name": "spinach",
+          "quantity": 100,
+          "unit": "grams"
+        },
+        {
+          "name": "almonds",
+          "quantity": 50,
+          "unit": "grams"
+        }
+      ]
+    },
+    "lunch": {
+      "calories": 500,
+      "protein": 35,
+      "carbs": 40,
+      "fat": 25,
+      "items": [
+        {
+          "name": "grilled steak",
+          "quantity": 200,
+          "unit": "grams"
+        },
+        {
+          "name": "sweet potato",
+          "quantity": 150,
+          "unit": "grams"
+        },
+        {
+          "name": "mixed salad",
+          "quantity": 150,
+          "unit": "grams"
+        }
+      ]
+    },
+    "dinner": {
+      "calories": 600,
+      "protein": 40,
+      "carbs": 50,
+      "fat": 30,
+      "items": [
+        {
+          "name": "roasted chicken",
+          "quantity": 250,
+          "unit": "grams"
+        },
+        {
+          "name": "zucchini noodles",
+          "quantity": 200,
+          "unit": "grams"
+        },
+        {
+          "name": "olive oil dressing",
+          "quantity": 50,
+          "unit": "grams"
+        }
+      ]
+    },
+    "snacks": {
+      "calories": 200,
+      "protein": 10,
+      "carbs": 20,
+      "fat": 15,
+      "items": [
+        {
+          "name": "apple slices",
+          "quantity": 100,
+          "unit": "grams"
+        },
+        {
+          "name": "peanut butter",
+          "quantity": 50,
+          "unit": "grams"
+        }
+      ]
+    },
+    "total": {
+      "calories": 1700,
+      "protein": 110,
+      "carbs": 140,
+      "fat": 90
+    }
+  }
+]
